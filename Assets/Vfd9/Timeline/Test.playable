@@ -35,7 +35,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     positionAmount: {x: 0, y: 0, z: 0}
-    rotationAmount: {x: 20, y: 100, z: 10}
+    rotationAmount: {x: 10, y: 100, z: 10}
     frequency: 0.05
     octaves: 2
     randomSeed: 132
