@@ -907,7 +907,7 @@ VisualEffectResource:
       * 0x8 + 0x4) << 2));\n\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\t\t\t#endif\n\t\t\t\t\t\t\n\t\t\t\t{\n\t\t\t\t
       \   float tmp_m = age / lifetime;\n\t\t\t\t    float tmp_n = (float)1 - tmp_m;\n\t\t\t\t
       \   SetAttribute_C7757136( /*inout */alpha, tmp_n);\n\t\t\t\t}\n\t\t\t\t{\n\t\t\t\t
-      \   SetAttribute_FDD06EC7( /*inout */color, float3(0.2169811,0.8623708,1));\n\t\t\t\t}\n\t\t\t\t\n\n\t\t\t\t\t\t\n\t\t\t\tif
+      \   SetAttribute_FDD06EC7( /*inout */color, float3(0.3050264,1.220106,1.414214));\n\t\t\t\t}\n\t\t\t\t\n\n\t\t\t\t\t\t\n\t\t\t\tif
       (!alive)\n\t\t\t\t\treturn o;\n\t\t\t\n\t\t\t\t#if TARGET_FROM_ATTRIBUTES\n\t\t\t\t\n\t\t\t\t\t\tfloat3
       size3 = float3(size,size,size);\n\t\t\t\t\t\t#if VFX_USE_SCALEX_CURRENT\n\t\t\t\t\t\tsize3.x
       *= scaleX;\n\t\t\t\t\t\t#endif\n\t\t\t\t\t\t#if VFX_USE_SCALEY_CURRENT\n\t\t\t\t\t\tsize3.y
@@ -1006,7 +1006,7 @@ VisualEffectResource:
       * 0x8 + 0x4) << 2));\n\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\t\t\t#endif\n\t\t\t\t\t\t\n\t\t\t\t{\n\t\t\t\t
       \   float tmp_m = age / lifetime;\n\t\t\t\t    float tmp_n = (float)1 - tmp_m;\n\t\t\t\t
       \   SetAttribute_C7757136( /*inout */alpha, tmp_n);\n\t\t\t\t}\n\t\t\t\t{\n\t\t\t\t
-      \   SetAttribute_FDD06EC7( /*inout */color, float3(102.7558,47.88095,10.22178));\n\t\t\t\t}\n\t\t\t\t\n\n\t\t\t\t\t\t\n\t\t\t\tif
+      \   SetAttribute_FDD06EC7( /*inout */color, float3(118.0354,55.00078,11.74174));\n\t\t\t\t}\n\t\t\t\t\n\n\t\t\t\t\t\t\n\t\t\t\tif
       (!alive)\n\t\t\t\t\treturn o;\n\t\t\t\t\t\t\t\n\t\t\t\tfloat3 vPos = position;\n\t\t\t\to.VFX_VARYING_POSCS
       = TransformPositionVFXToClip(vPos);\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\t#if VFX_USE_COLOR_CURRENT
       && defined(VFX_VARYING_COLOR)\n\t\t\t\t\t\to.VFX_VARYING_COLOR = color;\n\t\t\t\t\t\t#endif\n\t\t\t\t\t\t#if
@@ -1088,7 +1088,7 @@ VisualEffectResource:
       /*inout */position, targetPosition);\n\t\t\t\t{\n\t\t\t\t    float tmp_m = age
       / lifetime;\n\t\t\t\t    float tmp_n = (float)1 - tmp_m;\n\t\t\t\t    SetAttribute_C7757136(
       /*inout */alpha, tmp_n);\n\t\t\t\t}\n\t\t\t\t{\n\t\t\t\t    SetAttribute_FDD06EC7(
-      /*inout */color, float3(102.7558,47.88095,10.22178));\n\t\t\t\t}\n\t\t\t\t\n\n\t\t\t\t\t\t\n\t\t\t\tif
+      /*inout */color, float3(118.0354,55.00078,11.74174));\n\t\t\t\t}\n\t\t\t\t\n\n\t\t\t\t\t\t\n\t\t\t\tif
       (!alive)\n\t\t\t\t\treturn o;\n\t\t\t\t\t\t\t\n\t\t\t\tfloat3 vPos = position;\n\t\t\t\to.VFX_VARYING_POSCS
       = TransformPositionVFXToClip(vPos);\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\t#if VFX_USE_COLOR_CURRENT
       && defined(VFX_VARYING_COLOR)\n\t\t\t\t\t\to.VFX_VARYING_COLOR = color;\n\t\t\t\t\t\t#endif\n\t\t\t\t\t\t#if
@@ -1364,13 +1364,13 @@ VisualEffectResource:
         - m_ExpressionIndex: 25
           m_Value: {x: 0.2, y: 0.2, z: 0.2}
         - m_ExpressionIndex: 31
-          m_Value: {x: 0.21698111, y: 0.8623708, z: 1}
+          m_Value: {x: 0.30502644, y: 1.2201058, z: 1.4142135}
         - m_ExpressionIndex: 32
           m_Value: {x: 2, y: 3, z: 2}
         - m_ExpressionIndex: 33
           m_Value: {x: 0, y: 1, z: 0}
         - m_ExpressionIndex: 35
-          m_Value: {x: 102.75575, y: 47.880955, z: 10.221777}
+          m_Value: {x: 118.035385, y: 55.000782, z: 11.74174}
       m_Vector4f:
         m_Array: []
       m_Uint:
@@ -8609,7 +8609,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Color, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"r":102.75575256347656,"g":47.88095474243164,"b":10.221776962280274,"a":1.0}'
+      m_SerializableObject: '{"r":118.03538513183594,"g":55.00078201293945,"b":11.741740226745606,"a":1.0}'
     m_Space: 2147483647
   m_Property:
     name: 
@@ -8976,7 +8976,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"x":0.21698111295700074,"y":0.8623707890510559,"z":1.0}'
+      m_SerializableObject: '{"x":0.30502644181251528,"y":1.220105767250061,"z":1.4142135381698609}'
     m_Space: 2147483647
   m_Property:
     name: Color

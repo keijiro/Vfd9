@@ -3,6 +3,7 @@
     "com.unity.package-manager-ui": "2.0.3",
     "com.unity.render-pipelines.high-definition": "4.10.0-preview",
     "com.unity.visualeffectgraph": "4.10.0-preview",
+    "jp.keijiro.ffmpeg-out": "https://github.com/keijiro/jp.keijiro.ffmpeg-out.git",
     "jp.keijiro.kino.post-processing": "https://github.com/keijiro/Kino.git#upm",
     "jp.keijiro.klak": "https://github.com/keijiro/Klak.git#upm",
     "jp.keijiro.klak.hap": "https://github.com/keijiro/KlakHap.git#upm",
@@ -36,6 +37,10 @@
     "jp.keijiro.klak.timeline.procedural-motion": {
       "hash": "bcdcf104956a21500e2894bb762f19b6307cbb8e",
       "revision": "upm"
+    },
+    "jp.keijiro.ffmpeg-out": {
+      "hash": "9c735fc1e81e4ac9a81dcf6d870471d80a1cc963",
+      "revision": "HEAD"
     }
   }
 }

@@ -824,7 +824,7 @@ VisualEffectResource:
       * 0xC + 0x4) << 2));\n\t\t\t\t\t\tfloat3 color = asfloat(attributeBuffer.Load3((index
       * 0xC + 0x8) << 2));\n\t\t\t\t\t\tfloat alpha = asfloat(attributeBuffer.Load((index
       * 0xC + 0x3) << 2));\n\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\t\t\t#endif\n\t\t\t\t\t\t\n\t\t\t\t{\n\t\t\t\t
-      \   SetAttribute_545F0ED( /*inout */color, float3(19.78745,10.76305,21.11213));\n\t\t\t\t}\n\t\t\t\t\n\n\t\t\t\t\t\t\n\t\t\t\tif
+      \   SetAttribute_545F0ED( /*inout */color, float3(96.83788,52.72285,102.7558));\n\t\t\t\t}\n\t\t\t\t\n\n\t\t\t\t\t\t\n\t\t\t\tif
       (!alive)\n\t\t\t\t\treturn o;\n\t\t\t\n\t\t\t\t#if TARGET_FROM_ATTRIBUTES\n\t\t\t\t\n\t\t\t\t\t\tfloat3
       size3 = float3(size,size,size);\n\t\t\t\t\t\t#if VFX_USE_SCALEX_CURRENT\n\t\t\t\t\t\tsize3.x
       *= scaleX;\n\t\t\t\t\t\t#endif\n\t\t\t\t\t\t#if VFX_USE_SCALEY_CURRENT\n\t\t\t\t\t\tsize3.y
@@ -1048,7 +1048,7 @@ VisualEffectResource:
         - m_ExpressionIndex: 22
           m_Value: {x: 2, y: 3, z: 2}
         - m_ExpressionIndex: 23
-          m_Value: {x: 19.787445, y: 10.763046, z: 21.112127}
+          m_Value: {x: 96.83788, y: 52.722847, z: 102.75575}
       m_Vector4f:
         m_Array:
         - m_ExpressionIndex: 14
@@ -7816,7 +7816,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"x":19.787445068359376,"y":10.763046264648438,"z":21.11212730407715}'
+      m_SerializableObject: '{"x":96.83788299560547,"y":52.72284698486328,"z":102.75575256347656}'
     m_Space: 2147483647
   m_Property:
     name: Color
