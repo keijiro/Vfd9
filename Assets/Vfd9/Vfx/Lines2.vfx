@@ -46,7 +46,7 @@ MonoBehaviour:
   - {fileID: 114986932069951040}
   - {fileID: 114963171269329408}
   m_UIPosition: {x: 0, y: 0}
-  m_UICollapsed: 1
+  m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_MasterSlot: {fileID: 114307113894698210}
   m_MasterData:
@@ -55,7 +55,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.AABox, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"center":{"x":0.0,"y":1.0,"z":0.0},"size":{"x":2.0,"y":3.0,"z":2.0}}'
+      m_SerializableObject: '{"center":{"x":0.0,"y":0.0,"z":2.0},"size":{"x":3.0,"y":3.0,"z":3.0}}'
     m_Space: 0
   m_Property:
     name: bounds
@@ -85,8 +85,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1978
     y: -195
-    width: 3790
-    height: 1412
+    width: 3782
+    height: 1406
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -405,7 +405,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
-  m_UIPosition: {x: 1420, y: 118}
+  m_UIPosition: {x: 1411, y: 109}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -516,10 +516,11 @@ VisualEffectResource:
   m_ShaderSources:
   - compute: 1
     name: '[System 1]Initialize'
-    source: "#pragma kernel CSMain\n#include \"HLSLSupport.cginc\"\n#define NB_THREADS_PER_GROUP
-      64\n#define VFX_USE_POSITION_CURRENT 1\n#define VFX_USE_TARGETPOSITION_CURRENT
-      1\n#define VFX_USE_COLOR_CURRENT 1\n#define VFX_USE_ALPHA_CURRENT 1\n#define
-      VFX_USE_PARTICLEID_CURRENT 1\n#define VFX_LOCAL_SPACE 1\n\n\n\n#include \"Packages/com.unity.visualeffectgraph/Shaders/Common/VFXCommonCompute.cginc\"\n#include
+    source: "#pragma kernel CSMain\n#define NB_THREADS_PER_GROUP 64\n#define VFX_USE_POSITION_CURRENT
+      1\n#define VFX_USE_TARGETPOSITION_CURRENT 1\n#define VFX_USE_COLOR_CURRENT 1\n#define
+      VFX_USE_ALPHA_CURRENT 1\n#define VFX_USE_PARTICLEID_CURRENT 1\n#define VFX_LOCAL_SPACE
+      1\n#include \"Packages/com.unity.visualeffectgraph/Shaders/RenderPipeline/HDRP/VFXDefines.hlsl\"\n\n\n\n#include
+      \"Packages/com.unity.visualeffectgraph/Shaders/Common/VFXCommonCompute.cginc\"\n#include
       \"Packages/com.unity.visualeffectgraph/Shaders/VFXCommon.cginc\"\n\n\n\nRWByteAddressBuffer
       attributeBuffer;\nByteAddressBuffer sourceAttributeBuffer;\n\nCBUFFER_START(initParams)\n#if
       !VFX_USE_SPAWNER_FROM_GPU\n    uint nbSpawned;\t\t\t\t\t// Numbers of particle
@@ -568,10 +569,10 @@ VisualEffectResource:
       << 2,asuint(particleId));\n        \n\n#endif\n    }\n}\n"
   - compute: 1
     name: '[System 1]Update'
-    source: "#pragma kernel CSMain\n#include \"HLSLSupport.cginc\"\n#define NB_THREADS_PER_GROUP
-      64\n#define VFX_USE_POSITION_CURRENT 1\n#define VFX_USE_TARGETPOSITION_CURRENT
-      1\n#define VFX_USE_COLOR_CURRENT 1\n#define VFX_USE_ALPHA_CURRENT 1\n#define
-      VFX_USE_PARTICLEID_CURRENT 1\n#define VFX_LOCAL_SPACE 1\n\n\nCBUFFER_START(parameters)\n
+    source: "#pragma kernel CSMain\n#define NB_THREADS_PER_GROUP 64\n#define VFX_USE_POSITION_CURRENT
+      1\n#define VFX_USE_TARGETPOSITION_CURRENT 1\n#define VFX_USE_COLOR_CURRENT 1\n#define
+      VFX_USE_ALPHA_CURRENT 1\n#define VFX_USE_PARTICLEID_CURRENT 1\n#define VFX_LOCAL_SPACE
+      1\n#include \"Packages/com.unity.visualeffectgraph/Shaders/RenderPipeline/HDRP/VFXDefines.hlsl\"\n\n\nCBUFFER_START(parameters)\n
       \   float uniform_b;\n    float uniform_c;\n    float uniform_d;\n    uint PADDING_0;\nCBUFFER_END\nTexture2D
       texture_b;\nSamplerState samplertexture_b;\nTexture2D texture_c;\nSamplerState
       samplertexture_c;\n\n\n#include \"Packages/com.unity.visualeffectgraph/Shaders/Common/VFXCommonCompute.cginc\"\n#include
@@ -644,11 +645,10 @@ VisualEffectResource:
       \   float tmp_bn = tmp_bl[2];\n\t\t\t    float tmp_bo = tmp_bm + tmp_bn;\n\t\t\t
       \   float tmp_bp = tmp_bl[1];\n\t\t\t    float tmp_bq = tmp_bo + tmp_bp;\n\t\t\t
       \   float tmp_br = tmp_bl[0];\n\t\t\t    float tmp_bs = tmp_bq + tmp_br;\n\t\t\t
-      \   float tmp_bt = max(tmp_bs, (float)0);\n\t\t\t    float tmp_bv = min(tmp_bt,
-      (float)1);\n\t\t\t    float4 tmp_bw = SampleGradient(uniform_d,tmp_bv);\n\t\t\t
-      \   float tmp_bx = tmp_bw[0];\n\t\t\t    float tmp_by = tmp_bw[1];\n\t\t\t    float
-      tmp_bz = tmp_bw[2];\n\t\t\t    float3 tmp_ca = float3(tmp_bx, tmp_by, tmp_bz);\n\t\t\t
-      \   SetAttribute_FDD06EC7( /*inout */color, tmp_ca);\n\t\t\t}\n\t\t\t{\n\t\t\t
+      \   float tmp_bt = saturate(tmp_bs);\n\t\t\t    float4 tmp_bu = SampleGradient(uniform_d,tmp_bt);\n\t\t\t
+      \   float tmp_bv = tmp_bu[0];\n\t\t\t    float tmp_bw = tmp_bu[1];\n\t\t\t    float
+      tmp_bx = tmp_bu[2];\n\t\t\t    float3 tmp_by = float3(tmp_bv, tmp_bw, tmp_bx);\n\t\t\t
+      \   SetAttribute_FDD06EC7( /*inout */color, tmp_by);\n\t\t\t}\n\t\t\t{\n\t\t\t
       \   float tmp_m = (float)particleId;\n\t\t\t    float tmp_o = tmp_m * (float)0.003;\n\t\t\t
       \   float2 tmp_p = float2(tmp_o, uniform_b);\n\t\t\t    float3 tmp_s = GeneratePerlinNoise(tmp_p,
       float3(1,0.5,2).x, (int)2, float3(1,0.5,2).y, float3(1,0.5,2).z);\n\t\t\t    float
@@ -733,22 +733,22 @@ VisualEffectResource:
       = tmp_bl[3];\n\t\t    float tmp_bn = tmp_bl[2];\n\t\t    float tmp_bo = tmp_bm
       + tmp_bn;\n\t\t    float tmp_bp = tmp_bl[1];\n\t\t    float tmp_bq = tmp_bo
       + tmp_bp;\n\t\t    float tmp_br = tmp_bl[0];\n\t\t    float tmp_bs = tmp_bq
-      + tmp_br;\n\t\t    float tmp_bt = max(tmp_bs, (float)0);\n\t\t    float tmp_bv
-      = min(tmp_bt, (float)1);\n\t\t    float4 tmp_bw = SampleGradient(uniform_d,tmp_bv);\n\t\t
-      \   float tmp_bx = tmp_bw[0];\n\t\t    float tmp_by = tmp_bw[1];\n\t\t    float
-      tmp_bz = tmp_bw[2];\n\t\t    float3 tmp_ca = float3(tmp_bx, tmp_by, tmp_bz);\n\t\t
-      \   SetAttribute_FDD06EC7( /*inout */color, tmp_ca);\n\t\t}\n\t\t{\n\t\t    float
-      tmp_m = (float)particleId;\n\t\t    float tmp_o = tmp_m * (float)0.003;\n\t\t
-      \   float2 tmp_p = float2(tmp_o, uniform_b);\n\t\t    float3 tmp_s = GeneratePerlinNoise(tmp_p,
+      + tmp_br;\n\t\t    float tmp_bt = saturate(tmp_bs);\n\t\t    float4 tmp_bu =
+      SampleGradient(uniform_d,tmp_bt);\n\t\t    float tmp_bv = tmp_bu[0];\n\t\t    float
+      tmp_bw = tmp_bu[1];\n\t\t    float tmp_bx = tmp_bu[2];\n\t\t    float3 tmp_by
+      = float3(tmp_bv, tmp_bw, tmp_bx);\n\t\t    SetAttribute_FDD06EC7( /*inout */color,
+      tmp_by);\n\t\t}\n\t\t{\n\t\t    float tmp_m = (float)particleId;\n\t\t    float
+      tmp_o = tmp_m * (float)0.003;\n\t\t    float2 tmp_p = float2(tmp_o, uniform_b);\n\t\t
+      \   float3 tmp_s = GeneratePerlinNoise(tmp_p, float3(1,0.5,2).x, (int)2, float3(1,0.5,2).y,
+      float3(1,0.5,2).z);\n\t\t    float tmp_t = tmp_s[0];\n\t\t    float tmp_v =
+      tmp_t - (float)-1;\n\t\t    float tmp_x = tmp_v / (float)2;\n\t\t    float tmp_y
+      = tmp_x * (float)2;\n\t\t    float tmp_z = (float)-0.5 + tmp_y;\n\t\t    float2
+      tmp_ba = float2(tmp_o, uniform_c);\n\t\t    float3 tmp_bb = GeneratePerlinNoise(tmp_ba,
       float3(1,0.5,2).x, (int)2, float3(1,0.5,2).y, float3(1,0.5,2).z);\n\t\t    float
-      tmp_t = tmp_s[0];\n\t\t    float tmp_v = tmp_t - (float)-1;\n\t\t    float tmp_x
-      = tmp_v / (float)2;\n\t\t    float tmp_y = tmp_x * (float)2;\n\t\t    float
-      tmp_z = (float)-0.5 + tmp_y;\n\t\t    float2 tmp_ba = float2(tmp_o, uniform_c);\n\t\t
-      \   float3 tmp_bb = GeneratePerlinNoise(tmp_ba, float3(1,0.5,2).x, (int)2, float3(1,0.5,2).y,
-      float3(1,0.5,2).z);\n\t\t    float tmp_bc = tmp_bb[0];\n\t\t    float tmp_bd
-      = tmp_bc - (float)-1;\n\t\t    float tmp_be = tmp_bd / (float)2;\n\t\t    float
-      tmp_bf = tmp_be * (float)2;\n\t\t    float tmp_bg = (float)-0.5 + tmp_bf;\n\t\t
-      \   float2 tmp_bh = float2(tmp_z, tmp_bg);\n\t\t    float4 tmp_bj = SampleTexture(VFX_SAMPLER(texture_c),tmp_bh,(float)0);\n\t\t
+      tmp_bc = tmp_bb[0];\n\t\t    float tmp_bd = tmp_bc - (float)-1;\n\t\t    float
+      tmp_be = tmp_bd / (float)2;\n\t\t    float tmp_bf = tmp_be * (float)2;\n\t\t
+      \   float tmp_bg = (float)-0.5 + tmp_bf;\n\t\t    float2 tmp_bh = float2(tmp_z,
+      tmp_bg);\n\t\t    float4 tmp_bj = SampleTexture(VFX_SAMPLER(texture_c),tmp_bh,(float)0);\n\t\t
       \   float tmp_bk = tmp_bj[3];\n\t\t    uint tmp_bm = particleId + (uint)1;\n\t\t
       \   float tmp_bn = (float)tmp_bm;\n\t\t    float tmp_bo = tmp_bn * (float)0.003;\n\t\t
       \   float2 tmp_bp = float2(tmp_bo, uniform_b);\n\t\t    float3 tmp_bq = GeneratePerlinNoise(tmp_bp,
@@ -776,21 +776,20 @@ VisualEffectResource:
       }\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\tBlend
       SrcAlpha One\n\t\tZTest LEqual\n\t\tZWrite Off\n\t\tCull Off\n\t\t\n\t\n\t\t\t\n\t\tHLSLINCLUDE\n\t\t#if
       !defined(VFX_WORLD_SPACE) && !defined(VFX_LOCAL_SPACE)\n\t\t#define VFX_LOCAL_SPACE
-      1\n\t\t#endif\n\t\t\n\t\t#include \"HLSLSupport.cginc\"\n\t\t#define NB_THREADS_PER_GROUP
-      64\n\t\t#define VFX_USE_POSITION_CURRENT 1\n\t\t#define VFX_USE_TARGETPOSITION_CURRENT
-      1\n\t\t#define VFX_USE_COLOR_CURRENT 1\n\t\t#define VFX_USE_ALPHA_CURRENT 1\n\t\t#define
-      VFX_USE_ALIVE_CURRENT 1\n\t\t#define VFX_BLENDMODE_ADD 1\n\t\t\n\t\t\n\t\t\n\t\t#define
-      VFX_LOCAL_SPACE 1\n\t\t\n\n\t\t\n\t\t\n\t\t#define VFX_NEEDS_COLOR_INTERPOLATOR
-      (VFX_USE_COLOR_CURRENT || VFX_USE_ALPHA_CURRENT)\n\t\t#define IS_TRANSPARENT_PARTICLE
-      (!IS_OPAQUE_PARTICLE)\n\t\t\n\t\t#include \"Packages/com.unity.visualeffectgraph/Shaders/RenderPipeline/HDRP/VFXGlobalDefines.cginc\"\n\t\t\n\n\t\t\n\t\tByteAddressBuffer
+      1\n\t\t#endif\n\t\t\n\t\t#define NB_THREADS_PER_GROUP 64\n\t\t#define VFX_USE_POSITION_CURRENT
+      1\n\t\t#define VFX_USE_TARGETPOSITION_CURRENT 1\n\t\t#define VFX_USE_COLOR_CURRENT
+      1\n\t\t#define VFX_USE_ALPHA_CURRENT 1\n\t\t#define VFX_USE_ALIVE_CURRENT 1\n\t\t#define
+      IS_TRANSPARENT_PARTICLE 1\n\t\t#define VFX_BLENDMODE_ADD 1\n\t\t\n\t\t\n\t\t\n\t\t#define
+      VFX_LOCAL_SPACE 1\n\t\t#include \"Packages/com.unity.visualeffectgraph/Shaders/RenderPipeline/HDRP/VFXDefines.hlsl\"\n\t\t\n\n\t\t\n\t\t\n\t\t#define
+      VFX_NEEDS_COLOR_INTERPOLATOR (VFX_USE_COLOR_CURRENT || VFX_USE_ALPHA_CURRENT)\n\t\t\n\t\tByteAddressBuffer
       attributeBuffer;\t\n\t\t\n\t\t#if VFX_HAS_INDIRECT_DRAW\n\t\tStructuredBuffer<uint>
       indirectBuffer;\t\n\t\t#endif\t\n\t\t\n\t\t#if USE_DEAD_LIST_COUNT\n\t\tByteAddressBuffer
       deadListCount;\n\t\t#endif\n\t\t\n\t\tCBUFFER_START(outputParams)\n\t\t\tfloat
       nbMax;\n\t\t\tfloat systemSeed;\n\t\tCBUFFER_END\n\t\t\n\t\tENDHLSL\n\t\t\n\n\t\t\n\t\t//
       Forward pass\n\t\tPass\n\t\t{\t\t\n\t\t\tTags { \"LightMode\"=\"ForwardOnly\"
-      }\n\t\t\n\t\t\tHLSLPROGRAM\n\t\t\t#pragma target 4.5\n\t\t\t\n\t\t\tstruct ps_input\n\t\t\t{\n\t\t\t\tfloat4
-      pos : SV_POSITION;\n\t\t\t\t#if IS_TRANSPARENT_PARTICLE\n\t\t\t\tfloat pixelOffset
-      : TEXCOORD0; // for AA\n\t\t\t\t#endif\n\t\t\t\t#if VFX_NEEDS_COLOR_INTERPOLATOR\n\t\t\t\tnointerpolation
+      }\n\t\t\n\t\t\tHLSLPROGRAM\n\t\t\t#pragma target 4.5\n\t\t\t\n\t\t\t\n\t\t\tstruct
+      ps_input\n\t\t\t{\n\t\t\t\tfloat4 pos : SV_POSITION;\n\t\t\t\t#if IS_TRANSPARENT_PARTICLE\n\t\t\t\tfloat
+      pixelOffset : TEXCOORD0; // for AA\n\t\t\t\t#endif\n\t\t\t\t#if VFX_NEEDS_COLOR_INTERPOLATOR\n\t\t\t\tnointerpolation
       float4 color : COLOR0;\n\t\t\t\t#endif\n\t\t\t\t#if USE_SOFT_PARTICLE || USE_ALPHA_TEST\n\t\t\t\tnointerpolation
       float2 builtInInterpolants : TEXCOORD1;\n\t\t\t\t#endif\n\t\t\t\t#if VFX_NEEDS_POSWS_INTERPOLATOR\n\t\t\t\tfloat3
       posWS : TEXCOORD2;\n\t\t\t\t#endif\n\t\t\t};\n\t\t\t\n\t\t\tstruct ps_output\n\t\t\t{\n\t\t\t\tfloat4
@@ -863,33 +862,34 @@ VisualEffectResource:
       fragment frag\n\t\t\tps_output frag(ps_input i)\n\t\t\t{\n\t\t\t\tps_output
       o = (ps_output)0;\n\t\t\t\to.color = VFXGetFragmentColor(i);\n\t\t\t\t\n\t\t\t\t//
       Line AA\n\t\t\t\t#if IS_TRANSPARENT_PARTICLE\t\n\t\t\t\to.color.a *= 1.0f -
-      abs(i.pixelOffset);\n\t\t\t\t#endif\n\t\t\t\t\n\t\t\t\to.color = VFXApplyFog(o.color,i);\n\t\t\t\tVFXClipFragmentColor(o.color.a,i);\n\t\t\t\to.color.a
+      abs(i.pixelOffset);\n\t\t\t\t#endif\n\t\t\t\t\n\t\t        o.color = VFXApplyPreExposure(o.color);\n\t\t\t\to.color
+      = VFXApplyFog(o.color,i);\n\t\t\t\tVFXClipFragmentColor(o.color.a,i);\n\t\t\t\to.color.a
       = saturate(o.color.a);\n\t\t\t\treturn o;\n\t\t\t}\n\t\t\tENDHLSL\n\t\t}\n\t\t\n\n\t\t\n\t}\n}\n"
   m_Infos:
     m_Expressions:
       m_Expressions:
-      - op: 1
+      - op: 7
         valueIndex: 0
         data[0]: -1
         data[1]: -1
         data[2]: -1
-        data[3]: 1
-      - op: 7
+        data[3]: -1
+      - op: 1
         valueIndex: 1
         data[0]: -1
         data[1]: -1
         data[2]: -1
-        data[3]: -1
+        data[3]: 1
       - op: 1
         valueIndex: 2
         data[0]: -1
         data[1]: -1
         data[2]: -1
         data[3]: 1
-      - op: 21
+      - op: 25
         valueIndex: 3
-        data[0]: 1
-        data[1]: 0
+        data[0]: 0
+        data[1]: 1
         data[2]: -1
         data[3]: 1
       - op: 1
@@ -898,7 +898,7 @@ VisualEffectResource:
         data[1]: -1
         data[2]: -1
         data[3]: 1
-      - op: 23
+      - op: 27
         valueIndex: 5
         data[0]: 3
         data[1]: 2
@@ -945,13 +945,13 @@ VisualEffectResource:
         data[0]: -1
         data[1]: -1
         data[2]: -1
-        data[3]: 7
+        data[3]: 1
       - op: 1
-        valueIndex: 16
+        valueIndex: 15
         data[0]: -1
         data[1]: -1
         data[2]: -1
-        data[3]: 1
+        data[3]: 7
       - op: 1
         valueIndex: 17
         data[0]: -1
@@ -969,55 +969,50 @@ VisualEffectResource:
         data[0]: -1
         data[1]: -1
         data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 23
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
         data[3]: 7
-      - op: 45
-        valueIndex: 25
+      - op: 51
+        valueIndex: 24
         data[0]: 15
         data[1]: -1
         data[2]: -1
         data[3]: 0
       - op: 1
-        valueIndex: 26
+        valueIndex: 25
         data[0]: -1
         data[1]: -1
         data[2]: -1
         data[3]: 2
       - op: 1
-        valueIndex: 28
+        valueIndex: 27
         data[0]: -1
         data[1]: -1
         data[2]: -1
         data[3]: 3
       - op: 1
-        valueIndex: 31
+        valueIndex: 30
         data[0]: -1
         data[1]: -1
         data[2]: -1
         data[3]: 2
       - op: 1
-        valueIndex: 33
+        valueIndex: 32
         data[0]: -1
         data[1]: -1
         data[2]: -1
         data[3]: 3
       - op: 1
-        valueIndex: 36
+        valueIndex: 35
         data[0]: -1
         data[1]: -1
         data[2]: -1
         data[3]: 3
       m_NeedsLocalToWorld: 0
       m_NeedsWorldToLocal: 0
+      m_NeededMainCameraBuffers: 0
     m_PropertySheet:
       m_Float:
         m_Array:
-        - m_ExpressionIndex: 0
+        - m_ExpressionIndex: 1
           m_Value: 0.3
         - m_ExpressionIndex: 2
           m_Value: 143.7236
@@ -1029,25 +1024,23 @@ VisualEffectResource:
           m_Value: 2
         - m_ExpressionIndex: 11
           m_Value: -0.5
-        - m_ExpressionIndex: 13
+        - m_ExpressionIndex: 12
           m_Value: 0
-        - m_ExpressionIndex: 16
-          m_Value: 1
       m_Vector2f:
         m_Array:
-        - m_ExpressionIndex: 19
+        - m_ExpressionIndex: 18
           m_Value: {x: 60000, y: 60000}
-        - m_ExpressionIndex: 21
+        - m_ExpressionIndex: 20
           m_Value: {x: 0, y: 0}
       m_Vector3f:
         m_Array:
         - m_ExpressionIndex: 6
           m_Value: {x: 1, y: 0.5, z: 2}
-        - m_ExpressionIndex: 20
-          m_Value: {x: 0, y: 1, z: 0}
+        - m_ExpressionIndex: 19
+          m_Value: {x: 0, y: 0, z: 2}
+        - m_ExpressionIndex: 21
+          m_Value: {x: 3, y: 3, z: 3}
         - m_ExpressionIndex: 22
-          m_Value: {x: 2, y: 3, z: 2}
-        - m_ExpressionIndex: 23
           m_Value: {x: 96.83788, y: 52.722847, z: 102.75575}
       m_Vector4f:
         m_Array:
@@ -1099,9 +1092,9 @@ VisualEffectResource:
             m_NumAlphaKeys: 2
       m_NamedObject:
         m_Array:
-        - m_ExpressionIndex: 12
+        - m_ExpressionIndex: 13
           m_Value: {fileID: 8400000, guid: 00ae011d0f31c2d798c01d965a3b2cfa, type: 2}
-        - m_ExpressionIndex: 17
+        - m_ExpressionIndex: 16
           m_Value: {fileID: 8400000, guid: 45edc5b106bc7190aaaeda2e5b936724, type: 2}
       m_Bool:
         m_Array: []
@@ -1218,7 +1211,7 @@ VisualEffectResource:
     - name: OnStop
       playSystems: 
       stopSystems: 00000000
-    m_RuntimeVersion: 5
+    m_RuntimeVersion: 8
     m_RendererSettings:
       motionVectorGenerationMode: 0
       shadowCastingMode: 0
@@ -1227,6 +1220,8 @@ VisualEffectResource:
       lightProbeUsage: 0
     m_CullingFlags: 3
     m_UpdateMode: 0
+    m_PreWarmDeltaTime: 0.05
+    m_PreWarmStepCount: 0
   m_Systems:
   - type: 0
     flags: 0
@@ -1241,9 +1236,9 @@ VisualEffectResource:
       buffers: []
       values:
       - nameId: Count
-        index: 19
+        index: 18
       - nameId: Delay
-        index: 21
+        index: 20
       params: []
       processor: {fileID: 0}
       shaderSourceIndex: -1
@@ -1260,9 +1255,9 @@ VisualEffectResource:
       index: 1
     values:
     - nameId: bounds_center
-      index: 20
+      index: 19
     - nameId: bounds_size
-      index: 22
+      index: 21
     tasks:
     - type: 536870912
       buffers:
@@ -1273,9 +1268,9 @@ VisualEffectResource:
       values: []
       params:
       - nameId: bounds_center
-        index: 20
+        index: 19
       - nameId: bounds_size
-        index: 22
+        index: 21
       processor: {fileID: 0}
       shaderSourceIndex: 0
     - type: 805306368
@@ -1288,11 +1283,11 @@ VisualEffectResource:
       - nameId: uniform_c
         index: 5
       - nameId: uniform_d
-        index: 18
-      - nameId: texture_b
         index: 17
+      - nameId: texture_b
+        index: 16
       - nameId: texture_c
-        index: 12
+        index: 13
       params: []
       processor: {fileID: 0}
       shaderSourceIndex: 1

@@ -62,7 +62,7 @@ namespace Dkvfx
             Graphics.SetRenderTarget(_mrt, _positionMap.depthBuffer);
 
             // Invoke the shader
-            Graphics.DrawProcedural(MeshTopology.Triangles, 3, 1);
+            Graphics.DrawProceduralNow(MeshTopology.Triangles, 3, 1);
         }
 
         #endregion
