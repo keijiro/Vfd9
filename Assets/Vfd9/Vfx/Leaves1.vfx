@@ -113,7 +113,7 @@ MonoBehaviour:
     x: -413
     y: -277
     width: 1497
-    height: 2186
+    height: 2183
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -909,8 +909,8 @@ VisualEffectResource:
       1\n\t\t#define HDRP_LIT 1\n\t\t#define HDRP_MATERIAL_TYPE_STANDARD 1\n\t\t#define
       HDRP_USE_BASE_COLOR_MAP 1\n\t\t#define HDRP_USE_BASE_COLOR_MAP_COLOR 1\n\t\t#define
       HDRP_USE_BASE_COLOR_MAP_ALPHA 1\n\t\t#define HDRP_USE_BASE_COLOR 1\n\t\t#define
-      IS_OPAQUE_NOT_SIMPLE_LIT_PARTICLE 1\n\t\t\n\t\t\n\t\t\n\t\t#define VFX_LOCAL_SPACE
-      1\n\t\t#include \"Packages/com.unity.visualeffectgraph/Shaders/RenderPipeline/HDRP/VFXDefines.hlsl\"\n\t\t\n\n\t\tCBUFFER_START(parameters)\n\t\t
+      USE_DOUBLE_SIDED 1\n\t\t#define IS_OPAQUE_NOT_SIMPLE_LIT_PARTICLE 1\n\t\t\n\t\t\n\t\t\n\t\t#define
+      VFX_LOCAL_SPACE 1\n\t\t#include \"Packages/com.unity.visualeffectgraph/Shaders/RenderPipeline/HDRP/VFXDefines.hlsl\"\n\t\t\n\n\t\tCBUFFER_START(parameters)\n\t\t
       \   float4 uniform_b;\n\t\tCBUFFER_END\n\t\tTexture2D baseColorMap;\n\t\tSamplerState
       samplerbaseColorMap;\n\t\t\n\n\t\t\n\t\t#define VFX_NEEDS_COLOR_INTERPOLATOR
       (VFX_USE_COLOR_CURRENT || VFX_USE_ALPHA_CURRENT)\n\t\t\n\t\tByteAddressBuffer
@@ -1897,7 +1897,8 @@ VisualEffectResource:
         - m_ExpressionIndex: 45
           m_Value: {fileID: 0}
         - m_ExpressionIndex: 41
-          m_Value: {fileID: 4300008, guid: e4ba3c3efec62cb02af9392fe990b103, type: 3}
+          m_Value: {fileID: 957346622445994365, guid: d10981d0152fba4ce8f18457aaf3f6d9,
+            type: 3}
       m_Bool:
         m_Array: []
     m_ExposedExpressions: []
@@ -2276,7 +2277,7 @@ MonoBehaviour:
   useEmissiveMap: 0
   colorMode: 1
   useEmissive: 0
-  doubleSided: 0
+  doubleSided: 1
   enableShadows: 1
   enableSpecular: 1
   enableCookie: 1
@@ -2305,7 +2306,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Mesh, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"obj":{"fileID":4300008,"guid":"e4ba3c3efec62cb02af9392fe990b103","type":3}}'
+      m_SerializableObject: '{"obj":{"fileID":957346622445994365,"guid":"d10981d0152fba4ce8f18457aaf3f6d9","type":3}}'
     m_Space: 2147483647
   m_Property:
     name: mesh

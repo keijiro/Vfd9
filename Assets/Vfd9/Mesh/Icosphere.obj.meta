@@ -1,34 +1,8 @@
 fileFormatVersion: 2
-guid: a9fb8b64ecd63596aadda41588569326
+guid: f8b7908c8a4e4eafe90f53ae593ee7d9
 ModelImporter:
-  serializedVersion: 23
-  fileIDToRecycleName:
-    100000: Disc
-    100002: Icosphere
-    100004: ipr_camera
-    100006: Ring1
-    100008: Ring2
-    100010: //RootNode
-    400000: Disc
-    400002: Icosphere
-    400004: ipr_camera
-    400006: Ring1
-    400008: Ring2
-    400010: //RootNode
-    2000000: ipr_camera
-    2100000: No Name
-    2300000: Disc
-    2300002: Icosphere
-    2300004: Ring1
-    2300006: Ring2
-    3300000: Disc
-    3300002: Icosphere
-    3300004: Ring1
-    3300006: Ring2
-    4300000: Icosphere
-    4300002: Ring1
-    4300004: Ring2
-    4300006: Disc
+  serializedVersion: 25
+  internalIDToNameTable: []
   externalObjects: {}
   materials:
     importMaterials: 0
@@ -71,18 +45,19 @@ ModelImporter:
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
     preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
-    useFileScale: 0
-    previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 0
+    useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -91,10 +66,11 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 0
   copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -104,6 +80,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

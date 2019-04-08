@@ -113,7 +113,7 @@ MonoBehaviour:
     x: -878
     y: -190
     width: 4969
-    height: 2122
+    height: 2116
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2475,7 +2475,8 @@ VisualEffectResource:
         - m_ExpressionIndex: 34
           m_Value: {fileID: 0}
         - m_ExpressionIndex: 44
-          m_Value: {fileID: 4300000, guid: a9fb8b64ecd63596aadda41588569326, type: 3}
+          m_Value: {fileID: 289301614986012343, guid: f8b7908c8a4e4eafe90f53ae593ee7d9,
+            type: 3}
       m_Bool:
         m_Array: []
     m_ExposedExpressions: []
@@ -2997,7 +2998,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Mesh, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"obj":{"fileID":4300000,"guid":"a9fb8b64ecd63596aadda41588569326","type":3}}'
+      m_SerializableObject: '{"obj":{"fileID":289301614986012343,"guid":"f8b7908c8a4e4eafe90f53ae593ee7d9","type":3}}'
     m_Space: 2147483647
   m_Property:
     name: mesh
@@ -7195,7 +7196,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Mesh, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"obj":{"fileID":4300000,"guid":"a9fb8b64ecd63596aadda41588569326","type":3}}'
+      m_SerializableObject: '{"obj":{"fileID":289301614986012343,"guid":"f8b7908c8a4e4eafe90f53ae593ee7d9","type":3}}'
     m_Space: 2147483647
   m_Property:
     name: mesh
